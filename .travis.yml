@@ -1,0 +1,4 @@
+os: osx
+osx_image: xcode14.1
+language: swift
+script: xcodebuild clean build test -project SuperFeed/SuperFeed.xcodeproj -scheme "SuperFeed" CODE_SIGNING_IDENTITY="" CODE_SIGNING_REQUIRED=NO
