@@ -8,45 +8,6 @@
 import SuperFeed
 import XCTest
 
-// MARK: - LocalFeedLoader
-
-class LocalFeedLoader {
-
-  // MARK: Lifecycle
-
-  init(store: FeedStore, currentDate: @escaping () -> Date) {
-    self.store = store
-    self.currentDate = currentDate
-  }
-
-  // MARK: Internal
-
-  func save(_ items: [FeedItem], completion: @escaping (Error?) -> Void) {
-    store.deleteCachedFeed { [unowned self] error in
-      if error == nil {
-        self.store.insert(items, timestamp: self.currentDate(), completion: completion)
-      } else {
-        completion(error)
-      }
-    }
-  }
-
-  // MARK: Private
-
-  private let store: FeedStore
-  private let currentDate: () -> Date
-}
-
-// MARK: - FeedStore
-
-protocol FeedStore {
-  typealias DeletionCompletion = (Error?) -> Void
-  typealias InsertionCompletion = (Error?) -> Void
-
-  func deleteCachedFeed(completion: @escaping DeletionCompletion)
-  func insert(_ items: [FeedItem], timestamp: Date, completion: @escaping InsertionCompletion)
-}
-
 // MARK: - CacheFeedUseCaseTests
 
 class CacheFeedUseCaseTests: XCTestCase {
@@ -116,6 +77,38 @@ class CacheFeedUseCaseTests: XCTestCase {
       store.completeDeletionSuccessfully()
       store.completeInsertionSuccessfully()
     })
+  }
+  
+  
+  func test_save_doesNotDeliverDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
+    let store = FeedStoreSpy()
+    var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
+    
+    var receivedResults = [LocalFeedLoader.SaveResult]()
+    sut?.save([uniqueItem()]) {
+      receivedResults.append($0)
+    }
+    
+    sut = nil
+    store.completeDeletion(with: anyNSError())
+    
+    XCTAssertTrue(receivedResults.isEmpty)
+  }
+  
+  func test_save_doesNotDeliverInsertionErrorAfterSUTInstanceHasBeenDeallocated() {
+    let store = FeedStoreSpy()
+    var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
+    
+    var receivedResults = [LocalFeedLoader.SaveResult]()
+    sut?.save([uniqueItem()]) {
+      receivedResults.append($0)
+    }
+    
+    store.completeDeletionSuccessfully()
+    sut = nil
+    store.completeInsertion(with: anyNSError())
+    
+    XCTAssertTrue(receivedResults.isEmpty)
   }
 
   // MARK: Private
