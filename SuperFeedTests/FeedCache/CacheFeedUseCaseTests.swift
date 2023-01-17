@@ -79,7 +79,6 @@ class CacheFeedUseCaseTests: XCTestCase {
     })
   }
   
-  
   func test_save_doesNotDeliverDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
     let store = FeedStoreSpy()
     var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
