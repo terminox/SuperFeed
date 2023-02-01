@@ -8,38 +8,9 @@
 import SuperFeed
 import XCTest
 
-protocol FeedStoreSpecs {
-  func test_retrieve_deliversEmptyOnEmptyCache()
-  func test_retrieve_hasNoSideEffectsOnEmptyCache()
-  func test_retrieve_deliversFoundValuesOnNonEmptyCache()
-  func test_retrieve_hasNoSideEffectsOnNonEmptyCache()
-  
-  func test_insert_overridesPreviouslyInsertedCacheValues()
-  
-  func test_delete_hasNoSideEffectsOnEmptyCache()
-  func test_delete_emptiesPreviouslyInsertedCache()
-  
-  func test_storeSideEffects_runSerially()
-}
-
-protocol FailableRetriveFeedStoreSpecs {
-  func test_retrieve_deliversFailureOnRetrievalError()
-  func test_retrieve_hasNoSideEffectsOnFailure()
-}
-
-protocol FailableInsertFeedStoreSpecs {
-  func test_insert_deliversErrorOnInsertionError()
-  func test_insert_hasNoSideEffectsOnInsertionError()
-}
-
-protocol FailableDeleteFeedStoreSpecs {
-  func test_delete_deliversErrorOnDeletionError()
-  func test_delete_hasNoSideEffectsOnDeletionError()
-}
-
 // MARK: - CodableFeedStoreTests
 
-class CodableFeedStoreTests: XCTestCase {
+class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
 
   // MARK: Internal
 
@@ -125,7 +96,7 @@ class CodableFeedStoreTests: XCTestCase {
 
     XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
   }
-  
+
   func test_insert_hasNoSideEffectsOnInsertionError() {
     let invalidStoreURL = URL(string: "invalid://store-url")!
     let sut = makeSUT(storeURL: invalidStoreURL)
@@ -133,7 +104,7 @@ class CodableFeedStoreTests: XCTestCase {
     let timestamp = Date()
 
     insert((feed, timestamp), to: sut)
-    
+
     expect(sut, toRetrieve: .empty)
   }
 
@@ -164,7 +135,7 @@ class CodableFeedStoreTests: XCTestCase {
 
     XCTAssertNotNil(deletionError, "Expected cache deletion to fail")
   }
-  
+
   func test_delete_hasNoSideEffectsOnDeletionError() {
     let noDeletePermissionURL = FileManager.default.urls(for: .cachesDirectory, in: .systemDomainMask).first!
     let sut = makeSUT(storeURL: noDeletePermissionURL)

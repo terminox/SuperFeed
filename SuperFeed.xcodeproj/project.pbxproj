@@ -47,6 +47,7 @@
 		98DE872C298962E80078BBD8 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE872B298962E80078BBD8 /* CodableFeedStoreTests.swift */; };
 		98DE872E298A0AAB0078BBD8 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE872D298A0AAB0078BBD8 /* CodableFeedStore.swift */; };
 		98DE8730298A0B170078BBD8 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE872D298A0AAB0078BBD8 /* CodableFeedStore.swift */; };
+		98DE8732298A30690078BBD8 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE8731298A30690078BBD8 /* FeedStoreSpecs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		98DE8728298958E00078BBD8 /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 		98DE872B298962E80078BBD8 /* CodableFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStoreTests.swift; sourceTree = "<group>"; };
 		98DE872D298A0AAB0078BBD8 /* CodableFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStore.swift; sourceTree = "<group>"; };
+		98DE8731298A30690078BBD8 /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				98DE8720298832A60078BBD8 /* LoadFeedFromCacheUseCaseTests.swift */,
 				98DE8726298956F10078BBD8 /* ValidateFeedCacheUseCaseTests.swift */,
 				98DE872B298962E80078BBD8 /* CodableFeedStoreTests.swift */,
+				98DE8731298A30690078BBD8 /* FeedStoreSpecs.swift */,
 			);
 			path = FeedCache;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DE8732298A30690078BBD8 /* FeedStoreSpecs.swift in Sources */,
 				9830AF69293D07B300BD39CE /* FeedLoader.swift in Sources */,
 				9833EC0229767F6300F4F421 /* URLSessionHTTPClient.swift in Sources */,
 				98DE871F298825F90078BBD8 /* FeedStoreSpy.swift in Sources */,
