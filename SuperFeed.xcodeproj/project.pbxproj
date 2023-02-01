@@ -56,6 +56,7 @@
 		98DE875A298A58140078BBD8 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE8759298A58140078BBD8 /* ManagedCache.swift */; };
 		98DE875C298A58190078BBD8 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE875B298A58190078BBD8 /* ManagedFeedImage.swift */; };
 		98DE875E298A5B240078BBD8 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE875D298A5B240078BBD8 /* CoreDataHelpers.swift */; };
+		98DE8760298A5C1B0078BBD8 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE875F298A5C1B0078BBD8 /* CoreDataFeedStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		98DE8759298A58140078BBD8 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
 		98DE875B298A58190078BBD8 /* ManagedFeedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFeedImage.swift; sourceTree = "<group>"; };
 		98DE875D298A5B240078BBD8 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		98DE875F298A5C1B0078BBD8 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				98DE8759298A58140078BBD8 /* ManagedCache.swift */,
 				98DE875B298A58190078BBD8 /* ManagedFeedImage.swift */,
 				98DE875D298A5B240078BBD8 /* CoreDataHelpers.swift */,
+				98DE875F298A5C1B0078BBD8 /* CoreDataFeedStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				9830AF43293D078300BD39CE /* SuperFeed.docc in Sources */,
 				9833EBF9297651D200F4F421 /* LocalFeedLoader.swift in Sources */,
 				98DE875C298A58190078BBD8 /* ManagedFeedImage.swift in Sources */,
+				98DE8760298A5C1B0078BBD8 /* CoreDataFeedStore.swift in Sources */,
 				9833EBF7297651CE00F4F421 /* FeedStore.swift in Sources */,
 				98DE875E298A5B240078BBD8 /* CoreDataHelpers.swift in Sources */,
 				98DE8740298A53B80078BBD8 /* FeedStore.xcdatamodeld in Sources */,
