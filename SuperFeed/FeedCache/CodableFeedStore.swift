@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - CodableFeedStore
 
-public class CodableFeedStore: FeedStore {
+public final class CodableFeedStore: FeedStore {
 
   // MARK: Lifecycle
 
