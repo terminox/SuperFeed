@@ -23,9 +23,9 @@ protocol FeedStoreSpecs {
   func test_storeSideEffects_runSerially()
 }
 
-// MARK: - FailableRetriveFeedStoreSpecs
+// MARK: - FailableRetrieveFeedStoreSpecs
 
-protocol FailableRetreiveFeedStoreSpecs: FeedStoreSpecs {
+protocol FailableRetrieveFeedStoreSpecs: FeedStoreSpecs {
   func test_retrieve_deliversFailureOnRetrievalError()
   func test_retrieve_hasNoSideEffectsOnFailure()
 }
@@ -46,4 +46,4 @@ protocol FailableDeleteFeedStoreSpecs: FeedStoreSpecs {
 
 // MARK: - FailableFeedStoreSpecs
 
-typealias FailableFeedStoreSpecs = FailableRetreiveFeedStoreSpecs & FailableInsertFeedStoreSpecs & FailableDeleteFeedStoreSpecs
+typealias FailableFeedStoreSpecs = FailableRetrieveFeedStoreSpecs & FailableInsertFeedStoreSpecs & FailableDeleteFeedStoreSpecs
