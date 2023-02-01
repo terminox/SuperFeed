@@ -13,7 +13,7 @@ public final class CodableFeedStore: FeedStore {
 
   // MARK: Lifecycle
 
-  init(storeURL: URL) {
+  public init(storeURL: URL) {
     self.storeURL = storeURL
   }
 

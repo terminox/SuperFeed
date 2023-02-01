@@ -17,7 +17,7 @@ internal class ManagedFeedImage: NSManagedObject {
 }
 
 extension ManagedFeedImage {
-  
+
   internal static func images(from localFeed: [LocalFeedImage], in context: NSManagedObjectContext) -> NSOrderedSet {
     NSOrderedSet(array: localFeed.map { local in
       let managed = ManagedFeedImage(context: context)
@@ -28,8 +28,8 @@ extension ManagedFeedImage {
       return managed
     })
   }
-  
+
   internal var local: LocalFeedImage {
-    LocalFeedImage(id: id, description: description, location: location, url: url)
+    LocalFeedImage(id: id, description: imageDescription, location: location, url: url)
   }
 }
