@@ -59,6 +59,16 @@
                ReferencedContainer = "container:SuperFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "98DE87BC298B91DB0078BBD8"
+               BuildableName = "SuperFeedCacheIntegrationTests.xctest"
+               BlueprintName = "SuperFeedCacheIntegrationTests"
+               ReferencedContainer = "container:SuperFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

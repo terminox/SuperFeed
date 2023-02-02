@@ -48,6 +48,11 @@
 		98DE878D298A658D0078BBD8 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87222989542F0078BBD8 /* SharedTestHelpers.swift */; };
 		98DE87C0298B91DB0078BBD8 /* SuperFeedCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87BF298B91DB0078BBD8 /* SuperFeedCacheIntegrationTests.swift */; };
 		98DE87C1298B91DB0078BBD8 /* SuperFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9830AF3E293D078300BD39CE /* SuperFeed.framework */; };
+		98DE87C7298B98A30078BBD8 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87242989545A0078BBD8 /* FeedCacheTestHelpers.swift */; };
+		98DE87C8298B98A30078BBD8 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87242989545A0078BBD8 /* FeedCacheTestHelpers.swift */; };
+		98DE87C9298B98AF0078BBD8 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830AF6F293D07C200BD39CE /* XCTestCase+MemoryLeakTracking.swift */; };
+		98DE87CA298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87222989542F0078BBD8 /* SharedTestHelpers.swift */; };
+		98DE87CB298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87222989542F0078BBD8 /* SharedTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -535,7 +540,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DE87CA298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */,
 				9830AF7B293D14DA00BD39CE /* SuperFeedEndToEndTests.swift in Sources */,
+				98DE87C8298B98A30078BBD8 /* FeedCacheTestHelpers.swift in Sources */,
 				9830AF82293D157400BD39CE /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +551,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DE87CB298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */,
+				98DE87C7298B98A30078BBD8 /* FeedCacheTestHelpers.swift in Sources */,
 				98DE87C0298B91DB0078BBD8 /* SuperFeedCacheIntegrationTests.swift in Sources */,
+				98DE87C9298B98AF0078BBD8 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
