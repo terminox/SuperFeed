@@ -26,6 +26,8 @@
 		98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = 98B156CB2A149666002E3020 /* SuperFeediOS.docc */; };
 		98B156D22A149667002E3020 /* SuperFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B156C82A149666002E3020 /* SuperFeediOS.framework */; };
 		98B156E12A14BD6C002E3020 /* FeedImageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B156E02A14BD6C002E3020 /* FeedImageViewControllerTests.swift */; };
+		98B156E82A14C045002E3020 /* SuperFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9830AF3E293D078300BD39CE /* SuperFeed.framework */; platformFilter = ios; };
+		98B156ED2A1550DC002E3020 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830AF6F293D07C200BD39CE /* XCTestCase+MemoryLeakTracking.swift */; };
 		98DE8729298958E00078BBD8 /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE8728298958E00078BBD8 /* FeedCachePolicy.swift */; };
 		98DE872E298A0AAB0078BBD8 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE872D298A0AAB0078BBD8 /* CodableFeedStore.swift */; };
 		98DE8740298A53B80078BBD8 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98DE873E298A53B80078BBD8 /* FeedStore.xcdatamodeld */; };
@@ -79,6 +81,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 98B156C72A149666002E3020;
 			remoteInfo = SuperFeediOS;
+		};
+		98B156EA2A14C045002E3020 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9830AF35293D078300BD39CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9830AF3D293D078300BD39CE;
+			remoteInfo = SuperFeed;
 		};
 		98DE87C2298B91DB0078BBD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -166,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B156E82A14C045002E3020 /* SuperFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +209,7 @@
 				98B156C92A149666002E3020 /* SuperFeediOS */,
 				98B156D52A149667002E3020 /* SuperFeediOSTests */,
 				9830AF3F293D078300BD39CE /* Products */,
+				98B156E22A14C026002E3020 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,6 +320,13 @@
 				98B156E02A14BD6C002E3020 /* FeedImageViewControllerTests.swift */,
 			);
 			path = SuperFeediOSTests;
+			sourceTree = "<group>";
+		};
+		98B156E22A14C026002E3020 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		98D15D21296705EF0065ABC9 /* FeedCache */ = {
@@ -463,6 +481,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				98B156EB2A14C045002E3020 /* PBXTargetDependency */,
 			);
 			name = SuperFeediOS;
 			productName = SuperFeediOS;
@@ -677,6 +696,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B156E12A14BD6C002E3020 /* FeedImageViewControllerTests.swift in Sources */,
+				98B156ED2A1550DC002E3020 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +728,12 @@
 			isa = PBXTargetDependency;
 			target = 98B156C72A149666002E3020 /* SuperFeediOS */;
 			targetProxy = 98B156D32A149667002E3020 /* PBXContainerItemProxy */;
+		};
+		98B156EB2A14C045002E3020 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 9830AF3D293D078300BD39CE /* SuperFeed */;
+			targetProxy = 98B156EA2A14C045002E3020 /* PBXContainerItemProxy */;
 		};
 		98DE87C3298B91DB0078BBD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
