@@ -17,3 +17,9 @@ final class FeedViewController: UITableViewController {
     tableView.dequeueReusableCell(withIdentifier: "FeedImageCell", for: indexPath)
   }
 }
+
+struct FeedImageViewModel {
+  let description: String?
+  let location: String?
+  let imageName: String
+}
