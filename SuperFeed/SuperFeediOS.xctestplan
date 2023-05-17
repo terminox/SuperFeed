@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "EF67C554-2C5A-4EDB-8EAF-E67D3C3B8437",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:SuperFeed.xcodeproj",
+          "identifier" : "98B156C72A149666002E3020",
+          "name" : "SuperFeediOS"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SuperFeed.xcodeproj",
+        "identifier" : "98B156D02A149666002E3020",
+        "name" : "SuperFeediOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}
