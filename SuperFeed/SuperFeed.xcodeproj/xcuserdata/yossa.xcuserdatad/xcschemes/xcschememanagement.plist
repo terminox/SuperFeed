@@ -7,7 +7,7 @@
 		<key>CI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>SuperFeed.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,12 +17,12 @@
 		<key>SuperFeedCacheIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>3</integer>
 		</dict>
 		<key>SuperFeedEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>SuperFeedIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -43,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>9830AF77293D14DA00BD39CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98DE87BC298B91DB0078BBD8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
