@@ -58,6 +58,7 @@
 		98DE87C9298B98AF0078BBD8 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830AF6F293D07C200BD39CE /* XCTestCase+MemoryLeakTracking.swift */; };
 		98DE87CA298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87222989542F0078BBD8 /* SharedTestHelpers.swift */; };
 		98DE87CB298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87222989542F0078BBD8 /* SharedTestHelpers.swift */; };
+		98FF75E82A160730000A63D5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF75E72A160730000A63D5 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		98DE8761298A5EB90078BBD8 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
 		98DE87BD298B91DB0078BBD8 /* SuperFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98DE87BF298B91DB0078BBD8 /* SuperFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
+		98FF75E72A160730000A63D5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				98B156CB2A149666002E3020 /* SuperFeediOS.docc */,
+				98FF75E72A160730000A63D5 /* FeedViewController.swift */,
 			);
 			path = SuperFeediOS;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FF75E82A160730000A63D5 /* FeedViewController.swift in Sources */,
 				98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,6 +1072,7 @@
 		98B156DD2A149667002E3020 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1088,6 +1093,7 @@
 		98B156DE2A149667002E3020 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
