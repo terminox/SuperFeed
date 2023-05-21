@@ -60,6 +60,7 @@
 		98DE87CB298B98D40078BBD8 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DE87222989542F0078BBD8 /* SharedTestHelpers.swift */; };
 		98FF75E82A160730000A63D5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF75E72A160730000A63D5 /* FeedViewController.swift */; };
 		98FF75EA2A162408000A63D5 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF75E92A162408000A63D5 /* FeedImageCell.swift */; };
+		98FF75EC2A1771D3000A63D5 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF75EB2A1771D3000A63D5 /* UIView+Shimmering.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		98DE87BF298B91DB0078BBD8 /* SuperFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		98FF75E72A160730000A63D5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		98FF75E92A162408000A63D5 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
+		98FF75EB2A1771D3000A63D5 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 				98B156CB2A149666002E3020 /* SuperFeediOS.docc */,
 				98FF75E72A160730000A63D5 /* FeedViewController.swift */,
 				98FF75E92A162408000A63D5 /* FeedImageCell.swift */,
+				98FF75EB2A1771D3000A63D5 /* UIView+Shimmering.swift */,
 			);
 			path = SuperFeediOS;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98FF75E82A160730000A63D5 /* FeedViewController.swift in Sources */,
+				98FF75EC2A1771D3000A63D5 /* UIView+Shimmering.swift in Sources */,
 				98FF75EA2A162408000A63D5 /* FeedImageCell.swift in Sources */,
 				98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */,
 			);
