@@ -26,6 +26,7 @@
 		984888AA2A2BAD96005ECE69 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888A92A2BAD95005ECE69 /* FeedImageCellController.swift */; };
 		984888AD2A2BB4BA005ECE69 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888AC2A2BB4BA005ECE69 /* FeedUIComposer.swift */; };
 		984888B02A2C6D4B005ECE69 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888AF2A2C6D4B005ECE69 /* FeedViewModel.swift */; };
+		984888B22A2D0A61005ECE69 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888B12A2D0A61005ECE69 /* FeedImageViewModel.swift */; };
 		98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = 98B156CB2A149666002E3020 /* SuperFeediOS.docc */; };
 		98B156D22A149667002E3020 /* SuperFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B156C82A149666002E3020 /* SuperFeediOS.framework */; };
 		98B156E12A14BD6C002E3020 /* FeedImageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B156E02A14BD6C002E3020 /* FeedImageViewControllerTests.swift */; };
@@ -128,6 +129,7 @@
 		984888A92A2BAD95005ECE69 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 		984888AC2A2BB4BA005ECE69 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 		984888AF2A2C6D4B005ECE69 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		984888B12A2D0A61005ECE69 /* FeedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModel.swift; sourceTree = "<group>"; };
 		98B156C82A149666002E3020 /* SuperFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SuperFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B156CB2A149666002E3020 /* SuperFeediOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SuperFeediOS.docc; sourceTree = "<group>"; };
 		98B156D12A149667002E3020 /* SuperFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				984888AF2A2C6D4B005ECE69 /* FeedViewModel.swift */,
+				984888B12A2D0A61005ECE69 /* FeedImageViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				98FF75EC2A1771D3000A63D5 /* UIView+Shimmering.swift in Sources */,
 				98FF75EA2A162408000A63D5 /* FeedImageCell.swift in Sources */,
 				98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */,
+				984888B22A2D0A61005ECE69 /* FeedImageViewModel.swift in Sources */,
 				984888AA2A2BAD96005ECE69 /* FeedImageCellController.swift in Sources */,
 				984888B02A2C6D4B005ECE69 /* FeedViewModel.swift in Sources */,
 				984888AD2A2BB4BA005ECE69 /* FeedUIComposer.swift in Sources */,
