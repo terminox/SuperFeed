@@ -141,20 +141,11 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh" destination="otc-J0-mz8" eventType="valueChanged" id="fod-tb-r7M"/>
-                            <action selector="refresh" destination="5rU-iw-IW4" eventType="valueChanged" id="mxS-fV-Znp"/>
+                            <action selector="refresh" destination="otc-J0-mz8" eventType="valueChanged" id="fsF-of-MNT"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <outlet property="refreshController" destination="5rU-iw-IW4" id="sLf-da-m8D"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PE6-P5-40t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="5rU-iw-IW4" customClass="FeedRefreshViewController" customModule="SuperFeediOS" customModuleProvider="target">
-                    <connections>
-                        <outlet property="view" destination="EdF-cr-kVU" id="Zkz-5k-LUQ"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="840.45801526717548" y="-295.07042253521126"/>
         </scene>

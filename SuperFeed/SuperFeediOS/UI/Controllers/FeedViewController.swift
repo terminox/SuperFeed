@@ -8,6 +8,10 @@
 import UIKit
 import SuperFeed
 
+protocol FeedViewControllerDelegate {
+  func didRequestFeedRefresh()
+}
+
 public protocol FeedImageDataLoaderTask {
   func cancel()
 }
@@ -17,9 +21,9 @@ public protocol FeedImageDataLoader {
   func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> FeedImageDataLoaderTask
 }
 
-final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
   
-  @IBOutlet var refreshController: FeedRefreshViewController?
+  var delegate: FeedViewControllerDelegate?
   
   var tableModel: [FeedImageCellController] = [] {
     didSet {
@@ -31,9 +35,22 @@ final public class FeedViewController: UITableViewController, UITableViewDataSou
     super.viewDidLoad()
     
     tableView.prefetchDataSource = self
-    refreshController?.refresh()
+    refresh()
   }
   
+  func display(_ viewModel: FeedLoadingViewModel) {
+    if viewModel.isLoading {
+      refreshControl?.beginRefreshing()
+    } else {
+      refreshControl?.endRefreshing()
+    }
+  }
+  
+  @IBAction
+  private func refresh() {
+    delegate?.didRequestFeedRefresh()
+  }
+
   public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     tableModel.count
   }
