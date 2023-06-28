@@ -19,7 +19,7 @@ public protocol FeedImageDataLoader {
 
 final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
   
-  var refreshController: FeedRefreshViewController?
+  @IBOutlet var refreshController: FeedRefreshViewController?
   
   var tableModel: [FeedImageCellController] = [] {
     didSet {
@@ -30,9 +30,7 @@ final public class FeedViewController: UITableViewController, UITableViewDataSou
   override public func viewDidLoad() {
     super.viewDidLoad()
     
-    refreshControl = refreshController?.view
     tableView.prefetchDataSource = self
-    
     refreshController?.refresh()
   }
   

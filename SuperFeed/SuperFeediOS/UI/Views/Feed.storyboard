@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="otc-J0-mz8">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -10,7 +10,7 @@
         <!--Feed View Controller-->
         <scene sceneID="sSo-uX-ttP">
             <objects>
-                <tableViewController id="otc-J0-mz8" customClass="FeedViewController" customModule="Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="otc-J0-mz8" customClass="FeedViewController" customModule="SuperFeediOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Pj0-Ni-4G0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,10 +142,19 @@ Location</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refresh" destination="otc-J0-mz8" eventType="valueChanged" id="fod-tb-r7M"/>
+                            <action selector="refresh" destination="5rU-iw-IW4" eventType="valueChanged" id="mxS-fV-Znp"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="refreshController" destination="5rU-iw-IW4" id="sLf-da-m8D"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PE6-P5-40t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="5rU-iw-IW4" customClass="FeedRefreshViewController" customModule="SuperFeediOS" customModuleProvider="target">
+                    <connections>
+                        <outlet property="view" destination="EdF-cr-kVU" id="Zkz-5k-LUQ"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="840.45801526717548" y="-295.07042253521126"/>
         </scene>
