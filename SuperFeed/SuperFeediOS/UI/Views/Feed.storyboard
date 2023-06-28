@@ -79,6 +79,9 @@ Location</string>
                                                                 <fontDescription key="titleFontDescription" type="system" pointSize="60"/>
                                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="retryButtonTapped" destination="Oe8-Uu-QUj" eventType="touchUpInside" id="DpL-UB-Y1d"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,6 +129,7 @@ Location</string>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="8Xz-oh-SDi" id="0Jw-vX-tsD"/>
                                     <outlet property="feedImageContainer" destination="jEl-zW-bjG" id="VWX-cb-s4Q"/>
+                                    <outlet property="feedImageRetryButton" destination="cjd-hj-ymw" id="YNf-Xq-nwr"/>
                                     <outlet property="feedImageView" destination="USV-u9-QdO" id="9us-Xp-1Rc"/>
                                     <outlet property="locationContainer" destination="Kmp-V3-Ghz" id="Rcs-bV-SzR"/>
                                     <outlet property="locationLabel" destination="hqM-tm-oA3" id="aqg-OO-DF8"/>
