@@ -1,5 +1,5 @@
 //
-//  FeedImageViewControllerTests.swift
+//  FeedUIIntegrationTests.swift
 //  SuperFeediOSTests
 //
 //  Created by yossa on 17/5/2566 BE.
@@ -10,7 +10,15 @@ import UIKit
 import SuperFeed
 import SuperFeediOS
 
-final class FeedImageViewControllerTests: XCTestCase {
+final class FeedUIIntegrationTests: XCTestCase {
+  
+  func test_feedView_hasTitle() {
+    let (sut, _) = makeSUT()
+    
+    sut.loadViewIfNeeded()
+    
+    XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
+  }
   
   func test_loadFeedActions_requestFeedFromLoader() {
     let (sut, loader) = makeSUT()
@@ -337,130 +345,6 @@ final class FeedImageViewControllerTests: XCTestCase {
       
       func cancel() {
         cancelCallback()
-      }
-    }
-  }
-}
-
-private extension FeedViewController {
-  func simulateUserInitiatedFeedReload() {
-    refreshControl?.simulatePullToRefresh()
-  }
-  
-  @discardableResult
-  func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
-    feedImageView(at: index) as? FeedImageCell
-  }
-  
-  @discardableResult
-  func simulateFeedImageViewNotVisible(at row: Int) -> FeedImageCell? {
-    let view = simulateFeedImageViewVisible(at: row)
-    let delegate = tableView.delegate
-    let index = IndexPath(row: row, section: feedImagesSection)
-    delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: index)
-    return view
-  }
-  
-  func simulateFeedImageViewNearVisible(at row: Int) {
-    let dataSource = tableView.prefetchDataSource
-    let index = IndexPath(row: row, section: feedImagesSection)
-    dataSource?.tableView(tableView, prefetchRowsAt: [index])
-  }
-  
-  func simulateFeedImageViewNotNearVisible(at row: Int) {
-    simulateFeedImageViewNearVisible(at: row)
-    
-    let ds = tableView.prefetchDataSource
-    let index = IndexPath(row: row, section: feedImagesSection)
-    ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
-  }
-  
-  var isShowingLoadingIndicator: Bool {
-    refreshControl?.isRefreshing == true
-  }
-  
-  func numberOfRenderedFeedImageViews() -> Int {
-    tableView.numberOfRows(inSection: feedImagesSection)
-  }
-  
-  func feedImageView(at row: Int) -> UITableViewCell? {
-    let dataSource = tableView.dataSource
-    let index = IndexPath(row: row, section: feedImagesSection)
-    return dataSource?.tableView(tableView, cellForRowAt: index)
-  }
-  
-  private var feedImagesSection: Int {
-    0
-  }
-}
-
-private extension FeedImageCell {
-  
-  func simulateRetryAction() {
-    feedImageRetryButton.simulateTap()
-  }
-  
-  var isShowingLocation: Bool {
-    !locationContainer.isHidden
-  }
-  
-  var locationText: String? {
-    locationLabel.text
-  }
-  
-  var descriptionText: String? {
-    descriptionLabel.text
-  }
-  
-  var isShowingImageLoadingIndicator: Bool {
-    feedImageContainer.isShimmering
-  }
-  
-  var isShowingRetryAction: Bool {
-    !feedImageRetryButton.isHidden
-  }
-  
-  var renderedImage: Data? {
-    feedImageView.image?.pngData()
-  }
-}
-
-private extension UIRefreshControl {
-  func simulatePullToRefresh() {
-    allTargets.forEach { target in
-      actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-        (target as NSObject).perform(Selector($0))
-      }
-    }
-  }
-}
-
-private extension UIImage {
-  static func make(withColor color: UIColor) -> UIImage {
-    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-//    UIGraphicsBeginImageContext(rect.size)
-//    let context = UIGraphicsGetCurrentContext()!
-//    context.setFillColor(color.cgColor)
-//    context.fill(rect)
-//    let image = UIGraphicsGetImageFromCurrentImageContext()
-//    UIGraphicsEndImageContext()
-//    return image!
-    
-    let format = UIGraphicsImageRendererFormat()
-    format.scale = 1
-    
-    return UIGraphicsImageRenderer(size: rect.size, format: format).image { rendererContext in
-      color.setFill()
-      rendererContext.fill(rect)
-    }
-  }
-}
-
-private extension UIButton {
-  func simulateTap() {
-    allTargets.forEach { target in
-      actions(forTarget: target, forControlEvent: .touchUpInside)?.forEach {
-        (target as NSObject).perform(Selector($0))
       }
     }
   }
