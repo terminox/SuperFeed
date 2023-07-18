@@ -21,7 +21,7 @@ public protocol FeedImageDataLoader {
   func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> FeedImageDataLoaderTask
 }
 
-final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
+final public class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
   
   var delegate: FeedViewControllerDelegate?
   
@@ -42,6 +42,10 @@ final public class FeedViewController: UITableViewController, UITableViewDataSou
     } else {
       refreshControl?.endRefreshing()
     }
+  }
+  
+  func display(_ viewModel: FeedErrorViewModel) {
+    // TODO
   }
   
   @IBAction
