@@ -36,8 +36,8 @@
 		984888BA2A2E527F005ECE69 /* FeedLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888B92A2E527F005ECE69 /* FeedLoadingViewModel.swift */; };
 		984888BC2A2E528A005ECE69 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888BB2A2E528A005ECE69 /* FeedImageViewModel.swift */; };
 		984888BE2A2E5293005ECE69 /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888BD2A2E5293005ECE69 /* FeedImagePresenter.swift */; };
-		986CCE2C2A69A0F00035FCF3 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 986CCE2E2A69A0F00035FCF3 /* Feed.strings */; };
 		986CCE332A69A1E10035FCF3 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CCE322A69A1E10035FCF3 /* FeedPresenter.swift */; };
+		986CCE342A69A2810035FCF3 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 986CCE2E2A69A0F00035FCF3 /* Feed.strings */; };
 		98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = 98B156CB2A149666002E3020 /* SuperFeediOS.docc */; };
 		98B156D22A149667002E3020 /* SuperFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B156C82A149666002E3020 /* SuperFeediOS.framework */; };
 		98B156E12A14BD6C002E3020 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B156E02A14BD6C002E3020 /* FeedUIIntegrationTests.swift */; };
@@ -370,7 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				9845D9BF2A670E8D00215F1B /* FeedPresenterTests.swift */,
-				986CCE2E2A69A0F00035FCF3 /* Feed.strings */,
 			);
 			path = FeedPresentation;
 			sourceTree = "<group>";
@@ -412,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				986CCE322A69A1E10035FCF3 /* FeedPresenter.swift */,
+				986CCE2E2A69A0F00035FCF3 /* Feed.strings */,
 			);
 			path = FeedPresentation;
 			sourceTree = "<group>";
@@ -750,6 +750,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986CCE342A69A2810035FCF3 /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,7 +758,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				986CCE2C2A69A0F00035FCF3 /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
