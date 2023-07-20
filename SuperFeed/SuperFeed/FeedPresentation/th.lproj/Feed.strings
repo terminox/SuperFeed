@@ -1,2 +1,3 @@
 
 "FEED_VIEW_TITLE" = "ฟีดของฉัน";
+"FEED_VIEW_CONNECTION_ERROR" = "Couldn't connect to server";

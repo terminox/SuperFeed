@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import SuperFeediOS
+@testable import SuperFeed
 
 final class FeedLocalizationTests: XCTestCase {
   
