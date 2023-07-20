@@ -37,6 +37,7 @@
 		984888BC2A2E528A005ECE69 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888BB2A2E528A005ECE69 /* FeedImageViewModel.swift */; };
 		984888BE2A2E5293005ECE69 /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984888BD2A2E5293005ECE69 /* FeedImagePresenter.swift */; };
 		986CCE2C2A69A0F00035FCF3 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 986CCE2E2A69A0F00035FCF3 /* Feed.strings */; };
+		986CCE332A69A1E10035FCF3 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CCE322A69A1E10035FCF3 /* FeedPresenter.swift */; };
 		98B156CC2A149666002E3020 /* SuperFeediOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = 98B156CB2A149666002E3020 /* SuperFeediOS.docc */; };
 		98B156D22A149667002E3020 /* SuperFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B156C82A149666002E3020 /* SuperFeediOS.framework */; };
 		98B156E12A14BD6C002E3020 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B156E02A14BD6C002E3020 /* FeedUIIntegrationTests.swift */; };
@@ -160,6 +161,7 @@
 		986CCE2D2A69A0F00035FCF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		986CCE2F2A69A0FA0035FCF3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Feed.strings; sourceTree = "<group>"; };
 		986CCE302A69A0FA0035FCF3 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Feed.strings; sourceTree = "<group>"; };
+		986CCE322A69A1E10035FCF3 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		98B156C82A149666002E3020 /* SuperFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SuperFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B156CB2A149666002E3020 /* SuperFeediOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SuperFeediOS.docc; sourceTree = "<group>"; };
 		98B156D12A149667002E3020 /* SuperFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +290,7 @@
 				9830AF58293D07B300BD39CE /* FeedAPI */,
 				9833EBF5297651C100F4F421 /* FeedCache */,
 				9830AF5D293D07B300BD39CE /* FeedFeature */,
+				986CCE312A69A1D70035FCF3 /* FeedPresentation */,
 				9830AF41293D078300BD39CE /* SuperFeed.h */,
 				9830AF42293D078300BD39CE /* SuperFeed.docc */,
 			);
@@ -403,6 +406,14 @@
 				98FF75EE2A1A916E000A63D5 /* Views */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		986CCE312A69A1D70035FCF3 /* FeedPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				986CCE322A69A1E10035FCF3 /* FeedPresenter.swift */,
+			);
+			path = FeedPresentation;
 			sourceTree = "<group>";
 		};
 		98B156C92A149666002E3020 /* SuperFeediOS */ = {
@@ -802,6 +813,7 @@
 				9833EBFD2976721000F4F421 /* RemoteFeedItem.swift in Sources */,
 				9833EBFF29767DCC00F4F421 /* LocalFeedImage.swift in Sources */,
 				98DE872E298A0AAB0078BBD8 /* CodableFeedStore.swift in Sources */,
+				986CCE332A69A1E10035FCF3 /* FeedPresenter.swift in Sources */,
 				98DE8729298958E00078BBD8 /* FeedCachePolicy.swift in Sources */,
 				9830AF66293D07B300BD39CE /* RemoteFeedLoader.swift in Sources */,
 				9830AF6A293D07B300BD39CE /* FeedItem.swift in Sources */,
