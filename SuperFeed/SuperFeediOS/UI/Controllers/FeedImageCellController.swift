@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SuperFeed
 
 protocol FeedImageCellControllerDelegate {
   func didRequestImage()
