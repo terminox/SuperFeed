@@ -506,8 +506,8 @@
 				98DE8726298956F10078BBD8 /* ValidateFeedCacheUseCaseTests.swift */,
 				98DE8761298A5EB90078BBD8 /* CoreDataFeedStoreTests.swift */,
 				98DE8731298A30690078BBD8 /* FeedStoreSpecs.swift */,
-				98CB14142A7597D30038E4AD /* CacheFeedImageDataUseCaseTests.swift */,
 				98CB14182A759B320038E4AD /* CoreDataFeedImageDataStoreTests.swift */,
+				98CB14142A7597D30038E4AD /* CacheFeedImageDataUseCaseTests.swift */,
 				98CB141A2A759E1E0038E4AD /* LoadFeedImageDataFromCacheUseCaseTests.swift */,
 			);
 			path = FeedCache;
