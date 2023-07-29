@@ -9,6 +9,17 @@ import SuperFeed
 import XCTest
 
 class CoreDataFeedImageDataStoreTests: XCTestCase {
+
+  // MARK: Internal
+
+  func test_retrieveImageData_deliversNotFoundWhenEmpty() {
+    let sut = makeSUT()
+
+    expect(sut, toCompleteRetrievalWith: notFound(), for: anyURL())
+  }
+
+  // MARK: Private
+
   private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CoreDataFeedStore {
     let storeURL = URL(fileURLWithPath: "/dev/null")
     let sut = try! CoreDataFeedStore(storeURL: storeURL)
