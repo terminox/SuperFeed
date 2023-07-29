@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - LocalFeedLoader
 
-public class LocalFeedLoader {
+public final class LocalFeedLoader {
 
   // MARK: Lifecycle
 
@@ -22,27 +22,35 @@ public class LocalFeedLoader {
 
   private let store: FeedStore
   private let currentDate: () -> Date
-
-  private func cache(_ feed: [FeedImage], with completion: @escaping (SaveResult) -> Void) {
-    store.insert(feed.toLocal(), timestamp: currentDate()) { [weak self] error in
-      guard self != nil else { return }
-      completion(error)
-    }
-  }
 }
 
 extension LocalFeedLoader {
-  public typealias SaveResult = Error?
+
+  // MARK: Public
+
+  public typealias SaveResult = Result<Void, Error>
 
   public func save(_ feed: [FeedImage], completion: @escaping (SaveResult) -> Void) {
-    store.deleteCachedFeed { [weak self] error in
+    store.deleteCachedFeed { [weak self] deletionResult in
       guard let self = self else { return }
 
-      if let cacheDeletionError = error {
-        completion(cacheDeletionError)
-      } else {
+      switch deletionResult {
+      case .success:
         self.cache(feed, with: completion)
+
+      case .failure(let error):
+        completion(.failure(error))
       }
+    }
+  }
+
+  // MARK: Private
+
+  private func cache(_ feed: [FeedImage], with completion: @escaping (SaveResult) -> Void) {
+    store.insert(feed.toLocal(), timestamp: currentDate()) { [weak self] insertionResult in
+      guard self != nil else { return }
+
+      completion(insertionResult)
     }
   }
 }
@@ -50,18 +58,20 @@ extension LocalFeedLoader {
 // MARK: FeedLoader
 
 extension LocalFeedLoader: FeedLoader {
-  public typealias LoadResult = LoadFeedResult
-
+  public typealias LoadResult = FeedLoader.Result
 
   public func load(completion: @escaping (LoadResult) -> Void) {
     store.retrieve { [weak self] result in
       guard let self = self else { return }
+
       switch result {
       case .failure(let error):
         completion(.failure(error))
-      case .found(let feed, let timestamp) where FeedCachePolicy.validate(timestamp, against: self.currentDate()):
-        completion(.success(feed.toModels()))
-      case .found, .empty:
+
+      case .success(.some(let cache)) where FeedCachePolicy.validate(cache.timestamp, against: self.currentDate()):
+        completion(.success(cache.feed.toModels()))
+
+      case .success:
         completion(.success([]))
       }
     }
@@ -69,19 +79,21 @@ extension LocalFeedLoader: FeedLoader {
 }
 
 extension LocalFeedLoader {
-  public func validateCache() {
+  public typealias ValidationResult = Result<Void, Error>
+
+  public func validateCache(completion: @escaping (ValidationResult) -> Void) {
     store.retrieve { [weak self] result in
       guard let self = self else { return }
-      
+
       switch result {
       case .failure:
-        self.store.deleteCachedFeed { _ in }
-        
-      case .found(_, let timestamp) where !FeedCachePolicy.validate(timestamp, against: self.currentDate()):
-        self.store.deleteCachedFeed { _ in }
-        
-      case .empty, .found:
-        break
+        self.store.deleteCachedFeed(completion: completion)
+
+      case .success(.some(let cache)) where !FeedCachePolicy.validate(cache.timestamp, against: self.currentDate()):
+        self.store.deleteCachedFeed(completion: completion)
+
+      case .success:
+        completion(.success(()))
       }
     }
   }
@@ -89,16 +101,12 @@ extension LocalFeedLoader {
 
 extension Array where Element == FeedImage {
   fileprivate func toLocal() -> [LocalFeedImage] {
-    map {
-      LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url)
-    }
+    map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
   }
 }
 
 extension Array where Element == LocalFeedImage {
   fileprivate func toModels() -> [FeedImage] {
-    map {
-      FeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url)
-    }
+    map { FeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
   }
 }
