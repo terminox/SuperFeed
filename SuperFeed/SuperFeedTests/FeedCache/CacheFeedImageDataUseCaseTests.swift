@@ -27,7 +27,15 @@ class CacheFeedImageDataUseCaseTests: XCTestCase {
     
     XCTAssertEqual(store.receivedMessages, [.insert(data: data, for: url)])
   }
-
+  
+  func test_saveImageDataFromURL_succeedsOnSuccessfulStoreInsertion() {
+    let (sut, store) = makeSUT()
+    
+    expect(sut, toCompleteWith: .success(())) {
+      store.completeInsertionSuccessfully()
+    }
+  }
+  
   // MARK: Private
 
   private func makeSUT(
