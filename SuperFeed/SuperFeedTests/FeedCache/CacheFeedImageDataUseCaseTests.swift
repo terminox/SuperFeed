@@ -9,6 +9,17 @@ import SuperFeed
 import XCTest
 
 class CacheFeedImageDataUseCaseTests: XCTestCase {
+
+  // MARK: Internal
+
+  func test_init_doesNotMessageStoreUponCreation() {
+    let (_, store) = makeSUT()
+
+    XCTAssertTrue(store.receivedMessages.isEmpty)
+  }
+
+  // MARK: Private
+
   private func makeSUT(
     file: StaticString = #file,
     line: UInt = #line) -> (sut: LocalFeedImageDataLoader, store: FeedImageDataStoreSpy) {
