@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../SuperFeed/SuperFeed.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:SuperApp.xcodeproj">
+   </FileRef>
+</Workspace>
