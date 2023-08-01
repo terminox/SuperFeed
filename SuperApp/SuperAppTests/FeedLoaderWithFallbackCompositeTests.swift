@@ -5,40 +5,9 @@
 //  Created by yossa on 1/8/2566 BE.
 //
 
+import SuperApp
 import SuperFeed
 import XCTest
-
-// MARK: - FeedLoaderWithFallbackComposite
-
-class FeedLoaderWithFallbackComposite: FeedLoader {
-
-  // MARK: Lifecycle
-
-  init(primary: FeedLoader, fallback: FeedLoader) {
-    self.primary = primary
-    self.fallback = fallback
-  }
-
-  // MARK: Internal
-
-  func load(completion: @escaping (FeedLoader.Result) -> Void) {
-    primary.load { [weak self] result in
-      switch result {
-      case .success:
-        completion(result)
-      case .failure:
-        self?.fallback.load(completion: completion)
-      }
-    }
-  }
-
-  // MARK: Private
-
-  private let primary: FeedLoader
-  private let fallback: FeedLoader
-}
-
-// MARK: - FeedLoaderWithFallbackCompositeTests
 
 class FeedLoaderWithFallbackCompositeTests: XCTestCase {
 

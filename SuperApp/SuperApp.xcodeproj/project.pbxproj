@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		98C4C5A82A78EA3900F2E895 /* FeedLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4C5A72A78EA3900F2E895 /* FeedLoaderWithFallbackCompositeTests.swift */; };
+		98C4C5AA2A78F44E00F2E895 /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C4C5A92A78F44E00F2E895 /* FeedLoaderWithFallbackComposite.swift */; };
 		98CB14292A75A03F0038E4AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB14282A75A03F0038E4AD /* AppDelegate.swift */; };
 		98CB142B2A75A03F0038E4AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB142A2A75A03F0038E4AD /* SceneDelegate.swift */; };
 		98CB142D2A75A03F0038E4AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB142C2A75A03F0038E4AD /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		98C4C59E2A78EA1500F2E895 /* SuperAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98C4C5A72A78EA3900F2E895 /* FeedLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
+		98C4C5A92A78F44E00F2E895 /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		98CB14252A75A03F0038E4AD /* SuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98CB14282A75A03F0038E4AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98CB142A2A75A03F0038E4AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				98CB14282A75A03F0038E4AD /* AppDelegate.swift */,
 				98CB142A2A75A03F0038E4AD /* SceneDelegate.swift */,
 				98CB142C2A75A03F0038E4AD /* ViewController.swift */,
+				98C4C5A92A78F44E00F2E895 /* FeedLoaderWithFallbackComposite.swift */,
 				98CB142E2A75A03F0038E4AD /* Main.storyboard */,
 				98CB14312A75A0400038E4AD /* Assets.xcassets */,
 				98CB14332A75A0400038E4AD /* LaunchScreen.storyboard */,
@@ -243,6 +246,7 @@
 			files = (
 				98CB142D2A75A03F0038E4AD /* ViewController.swift in Sources */,
 				98CB14292A75A03F0038E4AD /* AppDelegate.swift in Sources */,
+				98C4C5AA2A78F44E00F2E895 /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				98CB142B2A75A03F0038E4AD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
