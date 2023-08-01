@@ -14,14 +14,14 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
   // MARK: Internal
   
-  func test_load_doesNotLoadOnCreation() {
+  func test_loadImageData_doesNotLoadOnCreation() {
     let (_, primaryLoader, fallbackLoader) = makeSUT()
     
     XCTAssertTrue(primaryLoader.urls.isEmpty)
     XCTAssertTrue(fallbackLoader.urls.isEmpty)
   }
 
-  func test_load_loadsFromPrimaryLoaderFirst() {
+  func test_loadImageData_loadsFromPrimaryLoaderFirst() {
     let url = anyURL()
     let (sut, primaryLoader, fallbackLoader) = makeSUT()
     
@@ -31,7 +31,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     XCTAssertTrue(fallbackLoader.urls.isEmpty)
   }
 
-  func test_load_loadsFromFallbackLoaderOnPrimaryFailure() {
+  func test_loadImageData_loadsFromFallbackLoaderOnPrimaryFailure() {
     let url = anyURL()
     let (sut, primaryLoader, fallbackLoader) = makeSUT()
     
@@ -42,7 +42,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     XCTAssertEqual(fallbackLoader.urls, [url])
   }
   
-  func test_cancelTask_cancelPrimaryTask() {
+  func test_cancelLoadImageData_cancelPrimaryTask() {
     let url = anyURL()
     let (sut, primaryLoader, fallbackLoader) = makeSUT()
     
@@ -53,7 +53,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     XCTAssertTrue(fallbackLoader.cancelledURLs.isEmpty)
   }
   
-  func test_cancelTask_cancelFallbackTaskAfterPrimaryFailure() {
+  func test_cancelLoadImageData_cancelFallbackTaskAfterPrimaryFailure() {
     let url = anyURL()
     let (sut, primaryLoader, fallbackLoader) = makeSUT()
     
@@ -64,6 +64,28 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     XCTAssertTrue(primaryLoader.cancelledURLs.isEmpty)
     XCTAssertEqual(fallbackLoader.cancelledURLs, [url])
   }
+  
+  func test_loadImageData_deliversPrimaryDataOnPrimarySuccess() {
+    let primaryData = anyData()
+    let url = anyURL()
+    let (sut, primaryLoader, _) = makeSUT()
+
+    let exp = expectation(description: "wait for image loading")
+    _ = sut.loadImageData(from: url) { result in
+      switch result {
+      case .success(let data):
+        XCTAssertEqual(data, primaryData)
+      case .failure(let error):
+        XCTFail("Expected \(primaryData), got \(error) instead")
+      }
+      
+      exp.fulfill()
+    }
+    
+    primaryLoader.complete(with: primaryData)
+    
+    wait(for: [exp], timeout: 1.0)
+  }
 
   // MARK: Private
 
@@ -72,7 +94,6 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     // MARK: Internal
 
     private(set) var cancelledURLs: [URL] = []
-
 
     var urls: [URL] {
       messages.map { $0.url }
@@ -85,6 +106,10 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
       }
     }
 
+    func complete(with data: Data, at index: Int = 0) {
+      messages[index].completion(.success(data))
+    }
+    
     func complete(with error: Error, at index: Int = 0) {
       messages[index].completion(.failure(error))
     }
@@ -120,6 +145,10 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
   private func anyNSError() -> NSError {
     NSError(domain: "any error", code: 0)
+  }
+  
+  func anyData() -> Data {
+    return Data("any data".utf8)
   }
 
   private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
