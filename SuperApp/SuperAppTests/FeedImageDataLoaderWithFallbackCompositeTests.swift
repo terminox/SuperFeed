@@ -22,24 +22,31 @@ class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
   // MARK: Internal
 
   func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-    task = primary.loadImageData(from: url) { [weak self] result in
+    let task = TaskWrapper()
+    task.wrapped = primary.loadImageData(from: url) { [weak self] result in
       switch result {
       case .success(let data):
         completion(.success(data))
       case .failure:
-        self?.task = self?.fallback.loadImageData(from: url, completion: completion)
+        task.wrapped = self?.fallback.loadImageData(from: url, completion: completion)
       }
     }
-    
-    return task!
+
+    return task
   }
 
   // MARK: Private
 
+  private class TaskWrapper: FeedImageDataLoaderTask {
+    var wrapped: FeedImageDataLoaderTask?
+
+    func cancel() {
+      wrapped?.cancel()
+    }
+  }
+
   private let primary: FeedImageDataLoader
   private let fallback: FeedImageDataLoader
-  
-  private var task: FeedImageDataLoaderTask?
 }
 
 // MARK: - FeedImageDataLoaderWithFallbackCompositeTests
@@ -71,7 +78,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
     wait(for: [exp], timeout: 1.0)
   }
-  
+
   func test_load_deliversFallbackImageOnPrimaryFailure() {
     let primaryLoader = FeedImageDataLoaderStub(result: .failure(anyNSError()))
 
@@ -124,7 +131,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
   private func anyURL() -> URL {
     URL(string: "https://any-url.com")!
   }
-  
+
   private func anyNSError() -> NSError {
     NSError(domain: "any error", code: 0)
   }
