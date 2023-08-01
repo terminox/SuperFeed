@@ -55,77 +55,65 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
   // MARK: Internal
 
-  func test_load_deliversPrimaryImageOnPrimarySuccess() {
-    let primaryData = UIImage.make(withColor: .red).pngData()!
-    let primaryLoader = FeedImageDataLoaderStub(result: .success(primaryData))
-
-    let fallbackData = UIImage.make(withColor: .blue).pngData()!
-    let fallbackLoader = FeedImageDataLoaderStub(result: .success(fallbackData))
+  func test_load_loadsFromPrimaryLoaderFirst() {
+    let primaryLoader = LoaderSpy()
+    let fallbackLoader = LoaderSpy()
     let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+    let url = anyURL()
+    
+    _ = sut.loadImageData(from: url) { _ in }
 
-    let exp = expectation(description: "wait for image loading")
-    _ = sut.loadImageData(from: anyURL()) { result in
-      switch result {
-      case .success(let data):
-        XCTAssertEqual(data, primaryData)
-
-      case .failure:
-        XCTFail("Expected data, got \(result) instead")
-      }
-
-      exp.fulfill()
-    }
-
-    wait(for: [exp], timeout: 1.0)
+    XCTAssertEqual(primaryLoader.urls, [url])
+    XCTAssertTrue(fallbackLoader.urls.isEmpty)
   }
 
-  func test_load_deliversFallbackImageOnPrimaryFailure() {
-    let primaryLoader = FeedImageDataLoaderStub(result: .failure(anyNSError()))
-
-    let fallbackData = UIImage.make(withColor: .blue).pngData()!
-    let fallbackLoader = FeedImageDataLoaderStub(result: .success(fallbackData))
+  func test_load_loadsFromFallbackLoaderOnPrimaryFailure() {
+    let primaryLoader = LoaderSpy()
+    let fallbackLoader = LoaderSpy()
     let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+    let url = anyURL()
+    
+    _ = sut.loadImageData(from: url) { _ in }
+    primaryLoader.complete(with: .failure(anyNSError()))
 
-    let exp = expectation(description: "wait for image loading")
-    _ = sut.loadImageData(from: anyURL()) { result in
-      switch result {
-      case .success(let data):
-        XCTAssertEqual(data, fallbackData)
-
-      case .failure:
-        XCTFail("Expected data, got \(result) instead")
-      }
-
-      exp.fulfill()
-    }
-
-    wait(for: [exp], timeout: 1.0)
+    XCTAssertEqual(primaryLoader.urls, [url])
+    XCTAssertEqual(fallbackLoader.urls, [url])
   }
 
   // MARK: Private
 
-  private class FeedImageDataLoaderStub: FeedImageDataLoader {
-
-    // MARK: Lifecycle
-
-    init(result: FeedImageDataLoader.Result) {
-      self.result = result
-    }
+  private class LoaderSpy: FeedImageDataLoader {
 
     // MARK: Internal
 
-    func loadImageData(from _: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-      completion(result)
-      return FeedImageDataLoaderTaskDummy()
+    private(set) var cancelledURLs: [URL] = []
+    
+    var urls: [URL] {
+      messages.map { $0.url }
+    }
+
+    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+      messages.append((url: url, completion: completion))
+      return LoaderTask { [weak self] in
+        self?.cancelledURLs.append(url)
+      }
+    }
+    
+    func complete(with result: FeedImageDataLoader.Result, at index: Int = 0) {
+      messages[index].completion(result)
     }
 
     // MARK: Private
 
-    private class FeedImageDataLoaderTaskDummy: FeedImageDataLoaderTask {
-      func cancel() {}
+    private struct LoaderTask: FeedImageDataLoaderTask {
+      let callback: () -> Void
+
+      func cancel() {
+        callback()
+      }
     }
 
-    private let result: FeedImageDataLoader.Result
+    private var messages: [(url: URL, completion: (FeedImageDataLoader.Result) -> Void)] = []
   }
 
   private func anyURL() -> URL {
@@ -134,19 +122,5 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
   private func anyNSError() -> NSError {
     NSError(domain: "any error", code: 0)
-  }
-}
-
-extension UIImage {
-  fileprivate static func make(withColor color: UIColor) -> UIImage {
-    let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-
-    let format = UIGraphicsImageRendererFormat()
-    format.scale = 1
-
-    return UIGraphicsImageRenderer(size: rect.size, format: format).image { rendererContext in
-      color.setFill()
-      rendererContext.fill(rect)
-    }
   }
 }
