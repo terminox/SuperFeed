@@ -13,11 +13,18 @@ import XCTest
 class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
   // MARK: Internal
+  
+  func test_load_doesNotLoadOnCreation() {
+    let (_, primaryLoader, fallbackLoader) = makeSUT()
+    
+    XCTAssertTrue(primaryLoader.urls.isEmpty)
+    XCTAssertTrue(fallbackLoader.urls.isEmpty)
+  }
 
   func test_load_loadsFromPrimaryLoaderFirst() {
+    let url = anyURL()
     let (sut, primaryLoader, fallbackLoader) = makeSUT()
     
-    let url = anyURL()
     _ = sut.loadImageData(from: url) { _ in }
 
     XCTAssertEqual(primaryLoader.urls, [url])
@@ -25,11 +32,11 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
   }
 
   func test_load_loadsFromFallbackLoaderOnPrimaryFailure() {
+    let url = anyURL()
     let (sut, primaryLoader, fallbackLoader) = makeSUT()
     
-    let url = anyURL()
     _ = sut.loadImageData(from: url) { _ in }
-    primaryLoader.complete(with: .failure(anyNSError()))
+    primaryLoader.complete(with: anyNSError())
 
     XCTAssertEqual(primaryLoader.urls, [url])
     XCTAssertEqual(fallbackLoader.urls, [url])
@@ -55,8 +62,8 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
       }
     }
 
-    func complete(with result: FeedImageDataLoader.Result, at index: Int = 0) {
-      messages[index].completion(result)
+    func complete(with error: Error, at index: Int = 0) {
+      messages[index].completion(.failure(error))
     }
 
     // MARK: Private
