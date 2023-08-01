@@ -1,5 +1,5 @@
 //
-//  FeedImageLoaderWithFallbackCompositeTests.swift
+//  FeedImageDataLoaderWithFallbackCompositeTests.swift
 //  SuperAppTests
 //
 //  Created by yossa on 2/8/2566 BE.
@@ -8,9 +8,9 @@
 import SuperFeed
 import XCTest
 
-// MARK: - FeedImageLoaderWithFallbackComposite
+// MARK: - FeedImageDataLoaderWithFallbackComposite
 
-class FeedImageLoaderWithFallbackComposite: FeedImageDataLoader {
+class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
 
   // MARK: Lifecycle
 
@@ -42,9 +42,9 @@ class FeedImageLoaderWithFallbackComposite: FeedImageDataLoader {
   private var task: FeedImageDataLoaderTask?
 }
 
-// MARK: - FeedImageLoaderWithFallbackCompositeTests
+// MARK: - FeedImageDataLoaderWithFallbackCompositeTests
 
-class FeedImageLoaderWithFallbackCompositeTests: XCTestCase {
+class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
 
   // MARK: Internal
 
@@ -54,7 +54,7 @@ class FeedImageLoaderWithFallbackCompositeTests: XCTestCase {
 
     let fallbackData = UIImage.make(withColor: .blue).pngData()!
     let fallbackLoader = FeedImageDataLoaderStub(result: .success(fallbackData))
-    let sut = FeedImageLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+    let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
 
     let exp = expectation(description: "wait for image loading")
     _ = sut.loadImageData(from: anyURL()) { result in
@@ -77,7 +77,7 @@ class FeedImageLoaderWithFallbackCompositeTests: XCTestCase {
 
     let fallbackData = UIImage.make(withColor: .blue).pngData()!
     let fallbackLoader = FeedImageDataLoaderStub(result: .success(fallbackData))
-    let sut = FeedImageLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+    let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
 
     let exp = expectation(description: "wait for image loading")
     _ = sut.loadImageData(from: anyURL()) { result in
