@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "F0D8E0BA-F2DC-4C76-BA21-721A0AEA5D56",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SuperApp.xcodeproj",
+      "identifier" : "98CB14242A75A03F0038E4AD",
+      "name" : "SuperApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SuperApp.xcodeproj",
+        "identifier" : "98C4C59D2A78EA1500F2E895",
+        "name" : "SuperAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

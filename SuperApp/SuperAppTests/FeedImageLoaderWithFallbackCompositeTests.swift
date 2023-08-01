@@ -22,13 +22,24 @@ class FeedImageLoaderWithFallbackComposite: FeedImageDataLoader {
   // MARK: Internal
 
   func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-    primary.loadImageData(from: url, completion: completion)
+    task = primary.loadImageData(from: url) { [weak self] result in
+      switch result {
+      case .success(let data):
+        completion(.success(data))
+      case .failure:
+        self?.task = self?.fallback.loadImageData(from: url, completion: completion)
+      }
+    }
+    
+    return task!
   }
 
   // MARK: Private
 
   private let primary: FeedImageDataLoader
   private let fallback: FeedImageDataLoader
+  
+  private var task: FeedImageDataLoaderTask?
 }
 
 // MARK: - FeedImageLoaderWithFallbackCompositeTests
@@ -50,6 +61,29 @@ class FeedImageLoaderWithFallbackCompositeTests: XCTestCase {
       switch result {
       case .success(let data):
         XCTAssertEqual(data, primaryData)
+
+      case .failure:
+        XCTFail("Expected data, got \(result) instead")
+      }
+
+      exp.fulfill()
+    }
+
+    wait(for: [exp], timeout: 1.0)
+  }
+  
+  func test_load_deliversFallbackImageOnPrimaryFailure() {
+    let primaryLoader = FeedImageDataLoaderStub(result: .failure(anyNSError()))
+
+    let fallbackData = UIImage.make(withColor: .blue).pngData()!
+    let fallbackLoader = FeedImageDataLoaderStub(result: .success(fallbackData))
+    let sut = FeedImageLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+
+    let exp = expectation(description: "wait for image loading")
+    _ = sut.loadImageData(from: anyURL()) { result in
+      switch result {
+      case .success(let data):
+        XCTAssertEqual(data, fallbackData)
 
       case .failure:
         XCTFail("Expected data, got \(result) instead")
@@ -87,9 +121,12 @@ class FeedImageLoaderWithFallbackCompositeTests: XCTestCase {
     private let result: FeedImageDataLoader.Result
   }
 
-
   private func anyURL() -> URL {
     URL(string: "https://any-url.com")!
+  }
+  
+  private func anyNSError() -> NSError {
+    NSError(domain: "any error", code: 0)
   }
 }
 

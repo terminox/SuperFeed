@@ -7,4 +7,7 @@
    <FileRef
       location = "container:SuperApp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:/Users/art/dev/class/SuperApp/SuperApp/SuperAppTests/SuperApp.xctestplan">
+   </FileRef>
 </Workspace>
