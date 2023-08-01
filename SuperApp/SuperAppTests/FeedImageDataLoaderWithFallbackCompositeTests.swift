@@ -109,6 +109,29 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
     wait(for: [exp], timeout: 1.0)
   }
+  
+  func test_loadImageData_deliversErrorDataOnBothLoadersFailure() {
+    let error = anyNSError()
+    let url = anyURL()
+    let (sut, primaryLoader, fallbackLoader) = makeSUT()
+
+    let exp = expectation(description: "wait for image loading")
+    _ = sut.loadImageData(from: url) { result in
+      switch result {
+      case .success(let data):
+        XCTFail("Expected an error, got \(data) instead")
+      case .failure:
+        break
+      }
+      
+      exp.fulfill()
+    }
+    
+    primaryLoader.complete(with: error)
+    fallbackLoader.complete(with: error)
+    
+    wait(for: [exp], timeout: 1.0)
+  }
 
   // MARK: Private
 
